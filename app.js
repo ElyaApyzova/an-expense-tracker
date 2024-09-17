@@ -1,18 +1,19 @@
-const expenseForm = document.getElementById('expense-form');
-const expenseInput = document.getElementById('expense-input');
-const amountInput = document.getElementById('amount-input');
-const categoryInput = document.getElementById('category-input');
-const transactionList = document.getElementById('transaction-list');
-const totalExpense = document.getElementById('total-expense');
-const totalIncome = document.getElementById('total-income');
-const balance = document.getElementById('balance');
+window.addEventListener('load', function() {
 
-expenseForm.addEventListener('submit', function(event) {
+    const expenseDescription = document.getElementById('expense-description');
+    const expenseCategory = document.getElementById('expense-category');
+    const expenseAmount = document.getElementById('expense-amount');
+    const transactionHistory = document.getElementById('transaction-history');
+    const totalIncome = document.getElementById('total-income');
+    const totalExpense = document.getElementById('total-expenses');
+    const balance = document.getElementById('balance');
+
+    document.querySelector('.button-group button').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const description = expenseInput.value.trim();
-    const amount = parseFloat(amountInput.value.trim());
-    const category = categoryInput.value;
+    const description = expenseDescription.value.trim();
+    const category = expenseCategory.value;
+    const amount = parseFloat(expenseAmount.value.trim());
 
     if (description === '' || isNaN(amount) || amount <= 0) {
         alert('Please enter a valid expense description and amount.');
@@ -79,12 +80,12 @@ function loadTransactions() {
     updateSummary();
 }
 
-window.addEventListener('load', loadTransactions);
+//window.addEventListener('load', loadTransactions);
 
 
-window.addEventListener('load', function() {
-    expenseInput.focus();
-});
+
+    //expenseInput.focus();
+
 
 
 function updateSummary() {
@@ -137,3 +138,4 @@ function showNotification(message) {
     }, 2000); // Notification will disappear after 2 seconds
 }
 
+});
